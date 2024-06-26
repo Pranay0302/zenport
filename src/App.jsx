@@ -60,7 +60,6 @@ export default function App() {
               </div>
             </div>
           </section>
-
           <div className="grid-container mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-12 pt-3 pb-3">
               <div className="col-span-12">
@@ -82,7 +81,7 @@ export default function App() {
                     </button>
                   </div>
                   {currentYear === year && (
-                    <div className={`timeline-content ${index % 2 === 0 ? 'ml-8' : 'mr-8'}`}>
+                    <div className={`timeline-content ${index % 2 === 0 ? 'ml-8 md:ml-0 md:mr-8' : 'mr-8 md:ml-8'}`}>
                       <h3 className="text-2xl font-bold mb-2">{experiences[year].title}</h3>
                       <p className="text-lg">{experiences[year].description}</p>
                     </div>
@@ -134,24 +133,20 @@ export default function App() {
               </div>
             </div>
           </section>
-          <section id="footer" className="grid grid-cols-4 sm:grid-cols-12 gap-20 p-20">
-        <div className="hidden sm:block col-span-3 mt-auto">
-          <p>Copyright © {new Date().getFullYear()}</p>
-          <p>ZENHARUKI</p>
-        </div>
-        <div className="col-span-2 sm:col-span-3 sm:mt-auto">
-          <div className="opacity-100 hover:opacity-50 transition-opacity">
-            <a href="https://www.instagram.com/zenharuki/" target="_blank" rel="noopener noreferrer">Instagram</a>
-          </div>
-          <div className="opacity-100 hover:opacity-50 transition-opacity">
-            <a href="https://www.linkedin.com/in/pranay23/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          </div>
-        </div>
-        <div className="sm:hidden mt-auto col-span-2">
-          <p>Copyright © {new Date().getFullYear()}</p>
-          <p>ZENHARUKI</p>
-        </div>
-      </section>
+          <section id="footer" className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-20 p-4 sm:p-20">
+            <div className="text-center sm:text-left mt-auto">
+              <p className="text-sm">Copyright © {new Date().getFullYear()}</p>
+              <p className="text-sm">ZENHARUKI</p>
+            </div>
+            <div className="flex justify-center sm:justify-end space-x-8 mt-auto">
+              <div className="opacity-100 hover:opacity-50 transition-opacity">
+                <a href="https://www.instagram.com/zenharuki/" target="_blank" rel="noopener noreferrer">Instagram</a>
+              </div>
+              <div className="opacity-100 hover:opacity-50 transition-opacity">
+                <a href="https://www.linkedin.com/in/pranay23/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              </div>
+            </div>
+          </section>
         </main>
       </div>
     </div>
