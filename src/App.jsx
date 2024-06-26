@@ -1,4 +1,5 @@
 import logo from './assets/zenharuki-logo.png';
+import sparkle from './assets/sparkle-logo.svg'
 
 export default function App() {
   return (
@@ -11,6 +12,16 @@ export default function App() {
         />
       </a>
     <div className="relative bg-beige">
+      <img
+        src={sparkle}
+        alt="Sparkle Logo"
+        className="absolute left-4 top-1 transform -translate-y-1/2 translate-x-10 w-8 h-auto"
+      />
+      <img
+        src={sparkle}
+        alt="Sparkle Logo"
+        className="absolute right-4 bottom-1 transform -translate-y-1/2 -translate-x-10 w-8 h-auto"
+      />
       <main className="max-w-4xl mx-auto p-4 font-primaryRegular space-y-8 mt-16">
         <section className="pt-11 md:pt-8">
           <div className="grid-container mx-auto">
