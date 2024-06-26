@@ -10,7 +10,7 @@ export default function App() {
                     I am a web developer passionate about creating interactive and user-friendly applications. If you&apos;d like to discuss something together,{' '}
                     <a 
                       className="text-blue-500 underline hover:text-blue-700" 
-                      href="mailto:your-email@example.com" 
+                      href="mailto:pka.pranayandra02@gmail.com" 
                       target="_blank" 
                       rel="noopener noreferrer"
                     >
@@ -86,7 +86,7 @@ export default function App() {
                     Feel free to reach out and connect with me on social media or via email.{' '}
                     <a 
                       className="text-blue-500 underline hover:text-blue-700" 
-                      href="mailto:your-email@example.com" 
+                      href="mailto:pka.pranayandra02@gmail.com" 
                       target="_blank" 
                       rel="noopener noreferrer"
                     >
@@ -95,7 +95,7 @@ export default function App() {
                     or find me on{' '}
                     <a 
                       className="text-blue-500 underline hover:text-blue-700" 
-                      href="https://www.instagram.com/your-profile" 
+                      href="https://www.instagram.com/zenharuki/" 
                       target="_blank" 
                       rel="noopener noreferrer"
                     >
