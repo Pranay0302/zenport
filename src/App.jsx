@@ -202,6 +202,9 @@ export default function App() {
               <div className="opacity-100 hover:opacity-50 transition-opacity">
                 <a href="https://www.linkedin.com/in/pranay23/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
               </div>
+              <div className="opacity-100 hover:opacity-50 transition-opacity">
+                <a href="https://github.com/Pranay0302" target="_blank" rel="noopener noreferrer">Github</a>
+              </div>
             </div>
           </section>
         </main>
