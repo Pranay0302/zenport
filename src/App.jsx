@@ -1,24 +1,64 @@
 import logo from './assets/zenharuki-logo.png';
 import sparkle from './assets/sparkle-logo.svg';
+import perfios from './assets/perfios-logo.jpeg';
+import rtsn from './assets/rtsn-logo.jpeg';
+import ril from './assets/ril-logo.jpeg';
+import mf from './assets/mf-logo.jpeg'
 import { useState } from 'react';
 
 export default function App() {
   const [currentYear, setCurrentYear] = useState(null);
 
-  const years = [2024, 2023, 2022];
+  const years = [2024, 2023, 2022, 2021];
   const experiences = {
-    2024: {
-      title: 'Job Title 1',
-      description: 'Description of job 1',
-    },
-    2023: {
-      title: 'Job Title 2',
-      description: 'Description of job 2',
-    },
-    2022: {
-      title: 'Job Title 3',
-      description: 'Description of job 3',
-    },
+    2024: [
+      {
+        title: 'Member Technical Team',
+        company: 'Perfios',
+        duration: '1 yr',
+        location: 'Bengaluru',
+        employmentType: 'Full-time',
+        logo: perfios
+      },
+    ],
+    2023: [
+      {
+        title: 'Project Intern',
+        company: 'Perfios',
+        duration: '6 mos',
+        location: 'Bengaluru',
+        employmentType: 'Internship',
+        logo: perfios
+      },
+    ],
+    2022: [
+      {
+        title: 'Full Stack Developer',
+        company: 'Time Space Ventures',
+        duration: '4 mos',
+        location: 'Remote',
+        employmentType: 'Internship',
+        logo: rtsn
+      },
+      {
+        title: 'Full Stack Developer',
+        company: 'Moneyfactory.ai',
+        duration: '3 mos',
+        location: 'Bengaluru',
+        employmentType: 'Internship',
+        logo: mf
+      },
+    ],
+    2021: [
+      {
+        title: 'Summer Intern',
+        company: 'Reliance Industries Limited',
+        duration: '1 mo',
+        location: 'Jamnagar',
+        employmentType: 'Internship',
+        logo: ril
+      },
+    ],
   };
 
   const handleYearClick = (year) => {
@@ -41,19 +81,20 @@ export default function App() {
         <main className="max-w-4xl mx-auto p-4 font-primaryRegular space-y-8 mt-16">
           <section className="pt-11 md:pt-8">
             <div className="grid-container mx-auto">
-              <div className="grid grid-cols-1 md:grid-cols-10">
+              <div className="grid grid-cols-1 md:grid-cols-16">
                 <div className="md:col-span-10 lg:col-span-9 mb-14">
                   <div className="rich-text-hero">
-                    <p className="text-3xl md:text-3xl leading-relaxed">
-                      I am a web developer passionate about creating interactive and user-friendly applications. If you&apos;d like to discuss something together,{' '}
-                      <a 
-                        className="text-blue-500 hover:text-blue-700" 
-                        href="mailto:pka.pranayandra02@gmail.com" 
-                        target="_blank" 
+                    <p className="text-2xl md:text-2xl leading-relaxed tracking-widest">
+                      Pranay Kumar Andra is an incoming graduate student in the MSCS program at the University of Colorado, Boulder, possesses extensive industry experience and a deep passion for pioneering software solutions. For collaboration,&nbsp;
+                      <a
+                        className="text-blue-500 hover:text-blue-700"
+                        href="mailto:pka.pranayandra02@gmail.com"
+                        target="_blank"
                         rel="noopener noreferrer"
                       >
                         get in touch
-                      </a>.
+                      </a>
+                      .
                     </p>
                   </div>
                 </div>
@@ -64,26 +105,39 @@ export default function App() {
             <div className="grid grid-cols-1 md:grid-cols-12 pt-3 pb-3">
               <div className="col-span-12">
                 <h2 className="text-xs uppercase font-medium mb-4">Experience Timeline</h2>
+                <p className="text-xl md:text-xl leading-relaxed">
+                  Throughout the years, I have been honored to work with small and large companies. Here are a few featured engagements.
+                </p>
               </div>
             </div>
             <hr />
             <div className="experience-timeline relative flex flex-col items-center mt-8">
-              {years.map((year, index) => (
-                <div key={year} className="timeline-branch relative flex items-center mb-8">
-                  <div className="flex-shrink-0">
+              {years.map((year) => (
+                <div key={year} className="timeline-branch relative mb-8">
                     <button
-                      className={`text-lg font-medium py-2 px-4 rounded-full transform -translate-x-1/2 transition-colors duration-300 ${
+                      className={`text-lg font-medium py-2 px-4 rounded-full ${
                         currentYear === year ? 'bg-blue-500 text-white' : 'bg-gray-200 hover:bg-gray-300'
                       }`}
                       onClick={() => handleYearClick(year)}
                     >
                       {year}
                     </button>
-                  </div>
                   {currentYear === year && (
-                    <div className={`timeline-content ${index % 2 === 0 ? 'ml-8 md:ml-0 md:mr-8' : 'mr-8 md:ml-8'}`}>
-                      <h3 className="text-2xl font-bold mb-2">{experiences[year].title}</h3>
-                      <p className="text-lg">{experiences[year].description}</p>
+                    <div className="timeline-content ml-12 mt-4 md:ml-0 md:mr-8">
+                      {experiences[year].map((job, index) => (
+                        <div key={`${year}-${index}`} className="mb-6">
+                          <div className="flex items-start">
+                          <img src={job.logo} alt="Company Logo" className="w-10 h-10 rounded-full mr-4" />
+                            <div>
+                              <h3 className="text-lg md:text-xl font-bold mb-1">{job.title}</h3>
+                              <p className="text-sm text-gray-600">{job.company}</p>
+                              <p className="text-sm">{job.employmentType}</p>
+                              <p className="text-sm">{job.duration}</p>
+                              <p className="text-sm">{job.location}</p>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   )}
                 </div>
@@ -96,7 +150,9 @@ export default function App() {
               <div className="grid grid-cols-1 md:grid-cols-10">
                 <div className="md:col-span-9 lg:col-span-9 mb-8">
                   <div className="rich-text-hero">
-                    <p className="text-3xl md:text-3xl leading-relaxed">Here is some more information about my background, interests, and skills.</p>
+                    <p className="text-2xl md:text-2xl leading-relaxed">
+                      Driven by a passion for shaping ideas, visual elements, and motion into compelling works, with a strong affinity for minimalism, modern architecture, and abstract art.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -110,23 +166,24 @@ export default function App() {
                   <div className="rich-text-hero">
                     <p className="text-3xl md:text-3xl leading-relaxed">
                       Feel free to reach out and connect with me on social media or via email.{' '}
-                      <a 
-                        className="text-blue-500 hover:text-blue-700" 
-                        href="mailto:pka.pranayandra02@gmail.com" 
-                        target="_blank" 
+                      <a
+                        className="text-blue-500 hover:text-blue-700"
+                        href="mailto:pka.pranayandra02@gmail.com"
+                        target="_blank"
                         rel="noopener noreferrer"
                       >
                         let’s chat
                       </a>{' '}
                       or find me on{' '}
-                      <a 
-                        className="text-blue-500 hover:text-blue-700" 
-                        href="https://www.instagram.com/zenharuki/" 
-                        target="_blank" 
+                      <a
+                        className="text-blue-500 hover:text-blue-700"
+                        href="https://www.instagram.com/zenharuki/"
+                        target="_blank"
                         rel="noopener noreferrer"
                       >
                         Instagram
-                      </a>.
+                      </a>
+                      .
                     </p>
                   </div>
                 </div>
