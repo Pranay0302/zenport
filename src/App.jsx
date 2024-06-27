@@ -3,7 +3,7 @@ import sparkle from './assets/sparkle-logo.svg';
 import perfios from './assets/perfios-logo.jpeg';
 import rtsn from './assets/rtsn-logo.jpeg';
 import ril from './assets/ril-logo.jpeg';
-import mf from './assets/mf-logo.jpeg'
+import mf from './assets/mf-logo.jpeg';
 import { useState } from 'react';
 
 export default function App() {
@@ -84,8 +84,8 @@ export default function App() {
               <div className="grid grid-cols-1 md:grid-cols-16">
                 <div className="md:col-span-10 lg:col-span-9 mb-14">
                   <div className="rich-text-hero">
-                    <p className="text-2xl md:text-2xl leading-relaxed tracking-widest">
-                      Pranay Kumar Andra is an incoming graduate student in the MSCS program at the University of Colorado, Boulder, possesses extensive industry experience and a deep passion for pioneering software solutions. For collaboration,&nbsp;
+                    <p className="text-2xl md:text-2xl leading-relaxed tracking-wider">
+                      I&apos;m Pranay Kumar Andra, an incoming graduate student in the MSCS program at the University of Colorado, Boulder. With practical industry exposure and a passion for pioneering software solutions. If you&apos;d like to discuss working together,&nbsp;
                       <a
                         className="text-blue-500 hover:text-blue-700"
                         href="mailto:pka.pranayandra02@gmail.com"
@@ -96,6 +96,9 @@ export default function App() {
                       </a>
                       .
                     </p>
+                  </div>
+                  <div className="text-left mt-4">
+                    <span className="text-xs text-gray-600">&quot;Pranay&quot; is pronounced as &quot;pruh-nay&quot; (/prəˈneɪ/).</span>
                   </div>
                 </div>
               </div>
