@@ -1,4 +1,3 @@
-import sparkle from './assets/sparkle-logo.svg';
 import perfios from './assets/perfios-logo.jpeg';
 import rtsn from './assets/rtsn-logo.jpeg';
 import ril from './assets/ril-logo.jpeg';
@@ -67,13 +66,6 @@ export default function App() {
   return (
     <div>
       <div className="relative text-left">
-        <div className="absolute right-4 top-1 transform -translate-y-1/2 w-8 h-auto">
-          <img src={sparkle} alt="Sparkle Logo" className="w-8 h-auto mb-4" />
-        </div>
-        <div className="absolute right-4 bottom-1 transform -translate-y-1/2 w-8 h-auto">
-          <img src={sparkle} alt="Sparkle Logo" className="w-8 h-auto mt-4" />
-        </div>
-
         <main className="max-w-4xl mx-auto p-4 font-primaryRegular space-y-8 mt-8">
           <section className="pt-11 md:pt-8">
             <div className="grid-container mx-auto">
