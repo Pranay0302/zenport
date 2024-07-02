@@ -1,11 +1,13 @@
+import { useState } from 'react';
 import perfios from './assets/perfios-logo.jpeg';
 import rtsn from './assets/rtsn-logo.jpeg';
 import ril from './assets/ril-logo.jpeg';
 import mf from './assets/mf-logo.jpeg';
-import { useState } from 'react';
 
 export default function App() {
+  const [isExpanded, setIsExpanded] = useState(false);
   const [currentYear, setCurrentYear] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
   const years = [2024, 2023, 2022, 2021];
   const experiences = {
@@ -16,7 +18,7 @@ export default function App() {
         duration: '1 yr',
         location: 'Bengaluru',
         employmentType: 'Full-time',
-        logo: perfios
+        logo: perfios,
       },
     ],
     2023: [
@@ -26,7 +28,7 @@ export default function App() {
         duration: '6 mos',
         location: 'Bengaluru',
         employmentType: 'Internship',
-        logo: perfios
+        logo: perfios,
       },
     ],
     2022: [
@@ -36,7 +38,7 @@ export default function App() {
         duration: '4 mos',
         location: 'Remote',
         employmentType: 'Internship',
-        logo: rtsn
+        logo: rtsn,
       },
       {
         title: 'Full Stack Developer',
@@ -44,7 +46,7 @@ export default function App() {
         duration: '3 mos',
         location: 'Bengaluru',
         employmentType: 'Internship',
-        logo: mf
+        logo: mf,
       },
     ],
     2021: [
@@ -54,17 +56,57 @@ export default function App() {
         duration: '1 mo',
         location: 'Jamnagar',
         employmentType: 'Internship',
-        logo: ril
+        logo: ril,
       },
     ],
   };
 
   const handleYearClick = (year) => {
-    setCurrentYear(currentYear === year ? null : year);
+    if (!isExpanded) {
+      setIsExpanded(true);
+      setCurrentYear(year);
+      setShowModal(true);
+    } else {
+      setCurrentYear(currentYear === year ? null : year);
+      setShowModal(currentYear !== year);
+    }
   };
+
+  const handleModalClose = () => {
+    setShowModal(false);
+  };
+
+  // eslint-disable-next-line react/prop-types
+  const Modal = ({ year }) => (
+    <div className="fixed inset-0 flex items-center justify-center z-50">
+      <div className="absolute inset-0 bg-black opacity-50" onClick={handleModalClose}></div>
+      <div className="bg-white rounded-lg p-8 z-10 max-w-md mx-auto">
+        <h2 className="text-2xl font-bold mb-4">Experience in {year}</h2>
+        {experiences[year].map((job, index) => (
+          <div key={`${year}-${index}`} className="mb-6">
+            <div className="flex items-start">
+              <img src={job.logo} alt="Company Logo" className="w-10 h-10 rounded-full mr-4" />
+              <div>
+                <h3 className="text-lg md:text-xl font-bold mb-1">{job.title}</h3>
+                <p className="text-sm text-gray-600">{job.company}</p>
+                <p className="text-sm">{job.employmentType}</p>
+                <p className="text-sm">{job.duration}</p>
+                <p className="text-sm">{job.location}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+        <button className="mt-4 text-blue-500 hover:text-blue-700" onClick={handleModalClose}>
+          Close
+        </button>
+      </div>
+    </div>
+  );
 
   return (
     <div>
+      {showModal && currentYear && <Modal year={currentYear} />}
+
       <div className="relative text-left">
         <main className="max-w-4xl mx-auto p-4 font-primaryRegular space-y-8 mt-8">
           <section className="pt-11 md:pt-8">
@@ -73,7 +115,7 @@ export default function App() {
                 <div className="md:col-span-10 lg:col-span-9 mb-14">
                   <div className="rich-text-hero">
                     <p className="text-2xl md:text-2xl leading-relaxed tracking-wider">
-                      I&apos;m Pranay Kumar Andra, an incoming graduate student in the MSCS program at the University of Colorado, Boulder. With practical industry exposure and a passion for pioneering software solutions. If you&apos;d like to discuss working together,&nbsp;
+                      I&apos;m <span className="text-blue-500">Pranay Kumar Andra</span>, an incoming graduate student in the MSCS program at the University of Colorado, Boulder. With practical industry exposure and a passion for pioneering software solutions. If you&apos;d like to discuss working together,&nbsp;
                       <a
                         className="text-blue-500 hover:text-blue-700"
                         href="mailto:pka.pranayandra02@gmail.com"
@@ -86,12 +128,14 @@ export default function App() {
                     </p>
                   </div>
                   <div className="text-left mt-4">
-                    <span className="text-xs text-gray-600">&quot;Pranay&quot; is pronounced as &quot;pruh-nay&quot; (/prəˈneɪ/).</span>
+                    <span className="text-xs text-gray-700">&quot;Pranay&quot; is pronounced as &quot;pruh-nay&quot; (/prəˈneɪ/).</span>
                   </div>
                 </div>
               </div>
             </div>
           </section>
+
+          <section className="my-8 mx-auto max-w-4xl">
           <div className="grid-container mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-12 pt-3 pb-3">
               <div className="col-span-12">
@@ -102,39 +146,36 @@ export default function App() {
               </div>
             </div>
             <hr />
-            <div className="experience-timeline relative flex flex-col items-start mt-8">
-              {years.map((year) => (
-                <div key={year} className="timeline-branch relative mb-8">
-                  <button
-                    className={`text-lg font-medium py-2 px-4 rounded-full ${
-                      currentYear === year ? 'bg-blue-500 text-white' : 'bg-gray-200 hover:bg-gray-300'
-                    }`}
-                    onClick={() => handleYearClick(year)}
-                  >
-                    {year}
-                  </button>
-                  {currentYear === year && (
-                    <div className="timeline-content ml-4 mt-4">
-                      {experiences[year].map((job, index) => (
-                        <div key={`${year}-${index}`} className="mb-6">
-                          <div className="flex items-start">
-                            <img src={job.logo} alt="Company Logo" className="w-10 h-10 rounded-full mr-4" />
-                            <div>
-                              <h3 className="text-lg md:text-xl font-bold mb-1">{job.title}</h3>
-                              <p className="text-sm text-gray-600">{job.company}</p>
-                              <p className="text-sm">{job.employmentType}</p>
-                              <p className="text-sm">{job.duration}</p>
-                              <p className="text-sm">{job.location}</p>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
+            <div className="experience-timeline relative flex flex-col md:flex-row items-center mt-8">
+              <div className="flex flex-col">
+                <button
+                  className="text-lg font-medium py-2 px-4 rounded-full bg-gray-200 hover:bg-gray-300 mb-4 transition-colors duration-300"
+                  onClick={() => {
+                    setIsExpanded(!isExpanded);
+                    setCurrentYear(null);
+                  }}
+                >
+                  {isExpanded ? 'Collapse Years' : 'Expand Years'}
+                </button>
+                {isExpanded && (
+                  <div className="flex">
+                    {years.map((year) => (
+                      <button
+                        key={year}
+                        className={`text-lg font-medium py-2 px-4 rounded-full ${
+                          currentYear === year ? 'bg-blue-500 text-white' : 'bg-gray-200 hover:bg-gray-300'
+                        } transition-colors duration-300 mr-4 mb-4`}
+                        onClick={() => handleYearClick(year)}
+                      >
+                        {year}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
+          </section>
 
           <section className="my-8">
             <div className="grid-container mx-auto">
