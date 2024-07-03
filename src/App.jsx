@@ -80,7 +80,7 @@ export default function App() {
   const Modal = ({ year }) => (
     <div className="fixed inset-0 flex items-center justify-center z-50">
       <div className="absolute inset-0 bg-black opacity-50" onClick={handleModalClose}></div>
-      <div className="bg-white rounded-lg p-8 z-10 max-w-md mx-auto flex flex-col items-center justify-center">
+      <div className="bg-white rounded-lg p-8 z-10 max-w-md mx-auto flex flex-col items-center justify-center border-2 border-black shadow-lg transform hover:scale-105 transition-transform duration-300">
         <h2 className="text-2xl font-bold mb-4">Experience in {year}</h2>
         {experiences[year].map((job, index) => (
           <div key={`${year}-${index}`} className="mb-6">
@@ -96,12 +96,12 @@ export default function App() {
             </div>
           </div>
         ))}
-        <button className="mt-4 text-blue-500 hover:text-blue-700 flex items-center justify-center" onClick={handleModalClose}>
-          Close
-        </button>
+        <button className="mt-4 text-blue-500 bg-white hover:text-blue-800 hover:bg-gray-200 flex items-center justify-center px-4 py-2 border-2 border-black rounded-md transition-colors duration-300" onClick={handleModalClose}>
+        Close
+      </button>
       </div>
     </div>
-  );
+  );  
 
   return (
     <div>
@@ -115,14 +115,14 @@ export default function App() {
                 <div className="md:col-span-10 lg:col-span-9 mb-14">
                   <div className="rich-text-hero">
                     <p className="text-2xl md:text-2xl leading-relaxed tracking-wider">
-                      I&apos;m <span className="text-blue-500">Pranay Kumar Andra</span>, an incoming graduate student in the MSCS program at the University of Colorado, Boulder. With practical industry exposure and a passion for pioneering software solutions. If you&apos;d like to discuss working together,&nbsp;
+                      I&apos;m <span className="text-blue-500">Pranay Kumar Andra</span>, an incoming graduate student in the MSCS program at the University of Colorado, Boulder. With practical industry exposure and a passion for pioneering software solutions. If you&apos;d like to contact me,&nbsp;
                       <a
                         className="text-blue-500 hover:text-blue-700"
                         href="mailto:pka.pranayandra02@gmail.com"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        get in touch
+                        message me here
                       </a>
                       .
                     </p>
