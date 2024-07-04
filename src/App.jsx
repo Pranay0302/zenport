@@ -133,7 +133,7 @@ export default function App() {
           <section className="pt-11 md:pt-8">
             <div className="grid-container mx-auto">
               <div className="grid grid-cols-1 md:grid-cols-16">
-                <div className="md:col-span-10 lg:col-span-9 mb-14">
+                <div className="md:col-span-10 lg:col-span-9 mb-4">
                   <div className="rich-text-hero">
                     <p className="text-xl md:text-xl leading-relaxed tracking-wider">
                       I&apos;m <span className="text-blue-500">Pranay Kumar Andra</span>, an incoming graduate student in the MSCS program at the University of Colorado, Boulder. With practical industry exposure and a passion for pioneering software solutions. If you&apos;d like to contact me,&nbsp;
