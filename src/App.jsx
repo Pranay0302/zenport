@@ -9,6 +9,7 @@ export default function App() {
   const [currentYear, setCurrentYear] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+  const [currentTime, setCurrentTime] = useState(new Date());
 
   const years = [2024, 2023, 2022, 2021];
   const experiences = {
@@ -72,6 +73,14 @@ export default function App() {
       window.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
+  
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
 
   const handleYearClick = (year) => {
     if (!isExpanded) {
@@ -92,7 +101,7 @@ export default function App() {
   const Modal = ({ year }) => (
     <div className="fixed inset-0 flex items-center justify-center z-50">
       <div className="absolute inset-0 bg-black opacity-50" onClick={handleModalClose}></div>
-      <div className="bg-white rounded-lg p-8 z-10 max-w-md mx-auto flex flex-col items-center justify-center border-2 border-black shadow-lg transform hover:scale-105 transition-transform duration-300">
+      <div className="bg-white rounded-lg p-8 z-10 max-w-md mx-auto flex flex-col items-center justify-center border-2 border-black shadow-lg">
         <h2 className="text-2xl font-bold mb-4">Experience in {year}</h2>
         {experiences[year].map((job, index) => (
           <div key={`${year}-${index}`} className="mb-6">
@@ -108,7 +117,7 @@ export default function App() {
             </div>
           </div>
         ))}
-        <button className="mt-4 text-blue-500 bg-white hover:text-blue-800 hover:bg-gray-200 flex items-center justify-center px-4 py-2 border-2 border-black rounded-md transition-colors duration-300" onClick={handleModalClose}>
+        <button className="mt-4 text-blue-500 bg-white hover:text-blue-800 hover:bg-gray-200 flex items-center justify-center px-4 py-2 border-2 border-black rounded-md" onClick={handleModalClose}>
           Close
         </button>
       </div>
@@ -236,8 +245,9 @@ export default function App() {
           </section>
           <section id="footer" className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-20 p-4 relative">
             <div className="text-left mt-auto">
-              <p className="text-sm tracking-widest">ZENHARUKI</p>
+              <p className="text-sm">{currentTime.toLocaleTimeString()}</p>
               <p className="text-sm">{cursorPosition.x} (X) , {cursorPosition.y} (Y)</p>
+              <p className="text-sm tracking-wide">ZENHARUKI</p>
             </div>
             <div className="flex justify-start space-x-8 mt-auto">
               <div className="opacity-100 hover:opacity-50 transition-opacity">
