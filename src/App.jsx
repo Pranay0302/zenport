@@ -129,8 +129,8 @@ export default function App() {
       {showModal && currentYear && <Modal year={currentYear} />}
 
       <div className="relative text-left">
-        <main className="max-w-4xl mx-auto p-4 font-primaryRegular space-y-8 mt-8">
-          <section className="pt-11 md:pt-8">
+        <main className="max-w-4xl mx-auto p-4 font-primaryRegular space-y-8 mt-6">
+          <section className="pt-11 md:pt-6">
             <div className="grid-container mx-auto">
               <div className="grid grid-cols-1 md:grid-cols-16">
                 <div className="md:col-span-10 lg:col-span-9 mb-4">
