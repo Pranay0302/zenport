@@ -117,7 +117,7 @@ export default function App() {
             </div>
           </div>
         ))}
-        <button className="mt-4 text-blue-500 bg-white hover:text-blue-800 hover:bg-gray-200 flex items-center justify-center px-4 py-2 border-2 border-black rounded-md" onClick={handleModalClose}>
+        <button className="mt-4 text-slate-700 bg-white hover:text-slate-950 flex items-center justify-center px-4 py-2 border-2 border-black rounded-md" onClick={handleModalClose}>
           Close
         </button>
       </div>
@@ -136,9 +136,9 @@ export default function App() {
                 <div className="md:col-span-10 lg:col-span-9 mb-4">
                   <div className="rich-text-hero">
                     <p className="text-xl md:text-xl leading-relaxed tracking-wider">
-                      I&apos;m <span className="text-blue-500">Pranay Kumar Andra</span>, an incoming graduate student in the MSCS program at the University of Colorado, Boulder. With practical industry exposure and a passion for pioneering software solutions. If you&apos;d like to contact me,&nbsp;
+                      I&apos;m <span className="text-[#9C9B9B]">Pranay Kumar Andra</span>, an incoming graduate student in the MSCS program at the University of Colorado, Boulder. With practical industry exposure and a passion for pioneering software solutions. If you&apos;d like to contact me,&nbsp;
                       <a
-                        className="text-blue-500 hover:text-blue-700"
+                        className="text-[#9C9B9B] hover:text-neutral-500"
                         href="mailto:pka.pranayandra02@gmail.com"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -184,7 +184,7 @@ export default function App() {
                         <button
                           key={year}
                           className={`text-lg font-medium py-2 px-4 rounded-full ${
-                            currentYear === year ? 'bg-blue-500 text-white' : 'bg-gray-200 hover:bg-gray-300'
+                            currentYear === year ? 'bg-[#9C9B9B] text-white' : 'bg-gray-200 hover:bg-gray-300'
                           } transition-colors duration-300 mr-4 mb-4`}
                           onClick={() => handleYearClick(year)}
                         >
@@ -220,7 +220,7 @@ export default function App() {
                     <p className="text-xl md:text-xl leading-relaxed">
                       Feel free to reach out and connect with me on social media or via email.{' '}
                       <a
-                        className="text-blue-500 hover:text-blue-700"
+                        className="text-[#9C9B9B] hover:text-neutral-500"
                         href="mailto:pka.pranayandra02@gmail.com"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -229,7 +229,7 @@ export default function App() {
                       </a>{' '}
                       or find me on{' '}
                       <a
-                        className="text-blue-500 hover:text-blue-700"
+                        className="text-[#9C9B9B] hover:text-neutral-500"
                         href="https://www.instagram.com/zenharuki/"
                         target="_blank"
                         rel="noopener noreferrer"
