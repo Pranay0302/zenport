@@ -3,6 +3,7 @@ import perfios from './assets/perfios-logo.jpeg';
 import rtsn from './assets/rtsn-logo.jpeg';
 import ril from './assets/ril-logo.jpeg';
 import mf from './assets/mf-logo.jpeg';
+import ThemeToggleButton from './components/ThemeToggleButton';
 
 export default function App() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -101,7 +102,7 @@ export default function App() {
   const Modal = ({ year }) => (
     <div className="fixed inset-0 flex items-center justify-center z-50">
       <div className="absolute inset-0 bg-black opacity-50" onClick={handleModalClose}></div>
-      <div className="bg-white rounded-lg p-8 z-10 max-w-md mx-auto flex flex-col items-center justify-center border-2 border-black shadow-lg">
+      <div className="bg-white dark:bg-gray-800 dark:text-white rounded-lg p-8 z-10 max-w-md mx-auto flex flex-col items-center justify-center border-2 border-black dark:border-gray-600 shadow-lg">
         <h2 className="text-2xl font-bold mb-4">Experience in {year}</h2>
         {experiences[year].map((job, index) => (
           <div key={`${year}-${index}`} className="mb-6">
@@ -109,7 +110,7 @@ export default function App() {
               <img src={job.logo} alt="Company Logo" className="w-10 h-10 rounded-full mr-4" />
               <div>
                 <h3 className="text-lg md:text-xl font-bold mb-1">{job.title}</h3>
-                <p className="text-sm text-gray-600">{job.company}</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300">{job.company}</p>
                 <p className="text-sm">{job.employmentType}</p>
                 <p className="text-sm">{job.duration}</p>
                 <p className="text-sm">{job.location}</p>
@@ -117,7 +118,7 @@ export default function App() {
             </div>
           </div>
         ))}
-        <button className="mt-4 text-slate-700 bg-white hover:text-slate-950 flex items-center justify-center px-4 py-2 border-2 border-black rounded-md" onClick={handleModalClose}>
+        <button className="mt-4 text-slate-700 dark:text-slate-300 bg-white dark:bg-gray-700 hover:text-slate-950 flex items-center justify-center px-4 py-2 border-2 border-black dark:border-gray-600 rounded-md" onClick={handleModalClose}>
           Close
         </button>
       </div>
@@ -149,7 +150,7 @@ export default function App() {
                     </p>
                   </div>
                   <div className="text-left mt-4">
-                    <span className="text-xs text-gray-700">&quot;Pranay&quot; is pronounced as &quot;pruh-nay&quot; (/prəˈneɪ/).</span>
+                    <span className="text-xs text-gray-700 dark:text-gray-300">&quot;Pranay&quot; is pronounced as &quot;pruh-nay&quot; (/prəˈneɪ/).</span>
                   </div>
                 </div>
               </div>
@@ -166,11 +167,11 @@ export default function App() {
                   </p>
                 </div>
               </div>
-              <hr />
+              <hr className="border-gray-400 dark:border-gray-600" />
               <div className="experience-timeline relative flex items-center justify-center mt-8">
                 <div className="flex flex-col">
                   <button
-                    className="text-lg font-medium py-2 px-4 rounded-full bg-gray-200 hover:bg-gray-300 mb-4 transition-colors duration-300"
+                    className="text-lg font-medium py-2 px-4 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 mb-4"
                     onClick={() => {
                       setIsExpanded(!isExpanded);
                       setCurrentYear(null);
@@ -184,8 +185,8 @@ export default function App() {
                         <button
                           key={year}
                           className={`text-lg font-medium py-2 px-4 rounded-full ${
-                            currentYear === year ? 'bg-[#9C9B9B] text-white' : 'bg-gray-200 hover:bg-gray-300'
-                          } transition-colors duration-300 mr-4 mb-4`}
+                            currentYear === year ? 'bg-[#9C9B9B] text-white' : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
+                          } mr-4 mb-4`}
                           onClick={() => handleYearClick(year)}
                         >
                           {year}
@@ -203,7 +204,7 @@ export default function App() {
               <div className="grid grid-cols-1 md:grid-cols-10">
                 <div className="md:col-span-9 lg:col-span-9 mb-8">
                   <div className="rich-text-hero">
-                    <p className="text-xl md:text-xl leading-relaxed">
+                    <p className="text-xl md:text-xl leading-relaxed dark:text-gray-300">
                       Driven by a passion for shaping ideas, visual elements, and motion into compelling works, with a strong affinity for minimalism, modern architecture, and abstract art.
                     </p>
                   </div>
@@ -259,6 +260,9 @@ export default function App() {
               <div className="opacity-100 hover:opacity-50 transition-opacity">
                 <a href="https://github.com/Pranay0302" target="_blank" rel="noopener noreferrer">Github</a>
               </div>
+            </div>
+            <div className="fixed top-4 right-4 z-50">
+                <ThemeToggleButton />
             </div>
           </section>
         </main>
