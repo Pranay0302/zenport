@@ -118,9 +118,6 @@ export default function App() {
             </div>
           </div>
         ))}
-        <button className="mt-4 text-slate-700 dark:text-slate-300 bg-white dark:bg-gray-700 hover:text-slate-950 flex items-center justify-center px-4 py-2 border-2 border-black dark:border-gray-600 rounded-md" onClick={handleModalClose}>
-          Close
-        </button>
       </div>
     </div>
   );
