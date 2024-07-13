@@ -5,6 +5,7 @@ import ril from './assets/ril-logo.jpeg';
 import mf from './assets/mf-logo.jpeg';
 import tme from './assets/transparent_me.svg';
 import ThemeToggleButton from './components/ThemeToggleButton';
+import { FaArrowUp } from 'react-icons/fa';
 
 export default function App() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -13,6 +14,8 @@ export default function App() {
   const [showModalSm, setShowModalSm] = useState(false);
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [currentTime, setCurrentTime] = useState(new Date());
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
 
   const years = [2024, 2023, 2022, 2021];
   const experiences = {
@@ -85,6 +88,23 @@ export default function App() {
     return () => clearInterval(timer);
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 200) {
+        setShowBackToTop(true);
+      } else {
+        setShowBackToTop(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleBackToTopClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const handleYearClick = (year) => {
     setCurrentYear(year);
     setShowModal(true);
@@ -130,7 +150,7 @@ export default function App() {
   const ModalSm = () => (
     <div className="fixed inset-0 flex items-center justify-center z-50">
       <div className="absolute inset-0 bg-black opacity-50" onClick={handleModalSmClose}></div>
-      <div className="bg-white dark:bg-dark dark:text-white rounded-lg p-6 z-10 max-w-sm mx-auto flex flex-col items-center justify-center border-2 border-black dark:border-gray-600 shadow-lg">
+      <div className="bg-white dark:bg-dark dark:text-white rounded-lg z-10 max-w-sm mx-auto flex flex-col items-center justify-center border-2 border-black dark:border-gray-600 shadow-lg">
         <img src={tme} alt="tme Logo" className="max-w-full h-auto max-h-full mb-4" />
       </div>
     </div>
@@ -221,7 +241,7 @@ export default function App() {
               <div className="grid grid-cols-1 md:grid-cols-10">
                 <div className="md:col-span-9 lg:col-span-9 mb-8">
                   <div className="rich-text-hero">
-                    <p className="text-xl md:text-xl leading-relaxed dark:text-gray-300">
+                    <p className="text-xl md:text-xl leading-relaxed">
                       Driven by a passion for shaping ideas, visual elements, and motion into compelling works, with a strong affinity for minimalism, modern architecture, and abstract art.
                     </p>
                   </div>
@@ -278,6 +298,13 @@ export default function App() {
               </div>
               <div className="opacity-100 hover:opacity-50 transition-opacity">
                 <a href="https://github.com/Pranay0302" target="_blank" rel="noopener noreferrer">Github</a>
+              </div>
+              <div>
+                {showBackToTop && (
+                    <button onClick={handleBackToTopClick} className="fixed bottom-4 right-4 bg-orange-200 text-black p-3 rounded-full md:hidden dark:bg-zinc-600 dark:text-white">
+                    <FaArrowUp />
+                    </button>
+                )}
               </div>
             </div>
             <div className="fixed top-4 right-4 z-50">
