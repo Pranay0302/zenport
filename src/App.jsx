@@ -3,12 +3,14 @@ import perfios from './assets/perfios-logo.jpeg';
 import rtsn from './assets/rtsn-logo.jpeg';
 import ril from './assets/ril-logo.jpeg';
 import mf from './assets/mf-logo.jpeg';
+import tme from './assets/transparent_me.svg';
 import ThemeToggleButton from './components/ThemeToggleButton';
 
 export default function App() {
   const [isExpanded, setIsExpanded] = useState(false);
   const [currentYear, setCurrentYear] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [showModalSm, setShowModalSm] = useState(false);
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [currentTime, setCurrentTime] = useState(new Date());
 
@@ -74,7 +76,7 @@ export default function App() {
       window.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
-  
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentTime(new Date());
@@ -84,18 +86,21 @@ export default function App() {
   }, []);
 
   const handleYearClick = (year) => {
-    if (!isExpanded) {
-      setIsExpanded(true);
-      setCurrentYear(year);
-      setShowModal(true);
-    } else {
-      setCurrentYear(currentYear === year ? null : year);
-      setShowModal(currentYear !== year);
-    }
+    setCurrentYear(year);
+    setShowModal(true);
   };
 
   const handleModalClose = () => {
     setShowModal(false);
+    setCurrentYear(null);
+  };
+
+  const handleModalSmClick = () => {
+    setShowModalSm(true);
+  };
+
+  const handleModalSmClose = () => {
+    setShowModalSm(false);
   };
 
   // eslint-disable-next-line react/prop-types
@@ -122,10 +127,18 @@ export default function App() {
     </div>
   );
 
+  const ModalSm = () => (
+    <div className="fixed inset-0 flex items-center justify-center z-50">
+      <div className="absolute inset-0 bg-black opacity-50" onClick={handleModalSmClose}></div>
+      <div className="bg-white dark:bg-dark dark:text-white rounded-lg p-6 z-10 max-w-sm mx-auto flex flex-col items-center justify-center border-2 border-black dark:border-gray-600 shadow-lg">
+        <img src={tme} alt="tme Logo" className="max-w-full h-auto max-h-full mb-4" />
+      </div>
+    </div>
+  );
+  
   return (
     <div>
       {showModal && currentYear && <Modal year={currentYear} />}
-
       <div className="relative text-left">
         <main className="max-w-4xl mx-auto p-4 font-primaryRegular space-y-8 mt-6">
           <section className="pt-11 md:pt-6">
@@ -134,17 +147,27 @@ export default function App() {
                 <div className="md:col-span-10 lg:col-span-9 mb-4">
                   <div className="rich-text-hero">
                     <p className="text-xl md:text-xl leading-relaxed tracking-wider">
-                      I&apos;m <span className="text-[#9C9B9B]">Pranay Kumar Andra</span>, an incoming graduate student in the MSCS program at the University of Colorado, Boulder. With practical industry exposure and a passion for pioneering software solutions. If you&apos;d like to contact me,&nbsp;
+                      I&apos;m{' '}
+                      <span
+                        className="relative inline-block text-[#9C9B9B] group cursor-pointer"
+                        onClick={handleModalSmClick}
+                      >
+                        Pranay Kumar Andra
+                        <span className="absolute left-0 right-0 bottom-0 h-0.5 bg-gradient-to-t from-gray-400 via-gray-600 to-gray-800 bg-squiggle bg-bottom-100 bg-auto transition-all duration-300 transform scale-x-0 group-hover:scale-x-100"></span>
+                      </span>
+                      , an incoming graduate student in the MSCS program at the University of Colorado, Boulder. With practical industry exposure and a passion for pioneering software solutions. If you&apos;d like to contact me,&nbsp;
                       <a
-                        className="text-[#9C9B9B] hover:text-neutral-500"
+                        className="text-[#9C9B9B] hover:text-neutral-500 transition-colors duration-300 relative group"
                         href="mailto:pka.pranayandra02@gmail.com"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         message me here
+                        <span className="absolute left-0 right-0 bottom-0 h-0.5 bg-gradient-to-t from-gray-400 via-gray-600 to-gray-800 bg-squiggle bg-bottom-100 bg-auto transition-all duration-300 transform scale-x-0 group-hover:scale-x-100 mt-1"></span>
                       </a>
                       .
                     </p>
+                    {showModalSm && <ModalSm />}
                   </div>
                   <div className="text-left mt-4">
                     <span className="text-xs text-gray-700 dark:text-gray-300">&quot;Pranay&quot; is pronounced as &quot;pruh-nay&quot; (/prəˈneɪ/).</span>
@@ -169,10 +192,7 @@ export default function App() {
                 <div className="flex flex-col">
                   <button
                     className="text-lg font-medium py-2 px-4 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 mb-4"
-                    onClick={() => {
-                      setIsExpanded(!isExpanded);
-                      setCurrentYear(null);
-                    }}
+                    onClick={() => setIsExpanded(!isExpanded)}
                   >
                     {isExpanded ? 'Collapse Years' : 'Expand Years'}
                   </button>
@@ -218,21 +238,23 @@ export default function App() {
                     <p className="text-xl md:text-xl leading-relaxed">
                       Feel free to reach out and connect with me on social media or via email.{' '}
                       <a
-                        className="text-[#9C9B9B] hover:text-neutral-500"
+                        className="text-[#9C9B9B] hover:text-neutral-500 transition-colors duration-300 relative group"
                         href="mailto:pka.pranayandra02@gmail.com"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        let’s chat
+                        let&apos;s chat
+                        <span className="absolute left-0 right-0 bottom-0 h-0.5 bg-gradient-to-t from-gray-400 via-gray-600 to-gray-800 bg-squiggle bg-bottom-100 bg-auto transition-all duration-300 transform scale-x-0 group-hover:scale-x-100 mt-1"></span>
                       </a>{' '}
                       or find me on{' '}
                       <a
-                        className="text-[#9C9B9B] hover:text-neutral-500"
+                        className="text-[#9C9B9B] hover:text-neutral-500 transition-colors duration-300 relative group"
                         href="https://www.instagram.com/zenharuki/"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         Instagram
+                        <span className="absolute left-0 right-0 bottom-0 h-0.5 bg-gradient-to-t from-gray-400 via-gray-600 to-gray-800 bg-squiggle bg-bottom-100 bg-auto transition-all duration-300 transform scale-x-0 group-hover:scale-x-100 mt-1"></span>
                       </a>
                       .
                     </p>
@@ -259,7 +281,7 @@ export default function App() {
               </div>
             </div>
             <div className="fixed top-4 right-4 z-50">
-                <ThemeToggleButton />
+              <ThemeToggleButton />
             </div>
           </section>
         </main>
