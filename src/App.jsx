@@ -175,7 +175,7 @@ export default function App() {
                         Pranay Kumar Andra
                         <span className="absolute left-0 right-0 bottom-0 h-0.5 bg-gradient-to-t from-gray-400 via-gray-600 to-gray-800 bg-squiggle bg-bottom-100 bg-auto transition-all duration-300 transform scale-x-0 group-hover:scale-x-100"></span>
                       </span>
-                      , a current graduate student in the MSCS program at the University of Colorado, Boulder. With practical industry exposure and a passion for pioneering software solutions. If you&apos;d like to contact me,&nbsp;
+                      , a current graduate student in the MSCS program at the University of Colorado, Boulder, with practical industry experience and a passion for pioneering software solutions. If you&apos;d like to contact me,&nbsp;
                       <a
                         className="text-[#9C9B9B] hover:text-neutral-500 transition-colors duration-300 relative group"
                         href="mailto:pka.pranayandra02@gmail.com"
