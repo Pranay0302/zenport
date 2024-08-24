@@ -239,10 +239,23 @@ export default function App() {
           <section className="my-8">
             <div className="grid-container mx-auto">
               <div className="grid grid-cols-1 md:grid-cols-10">
-                <div className="md:col-span-9 lg:col-span-9 mb-8">
+                <div className="md:col-span-9 lg:col-span-9">
                   <div className="rich-text-hero">
                     <p className="text-xl md:text-xl leading-relaxed">
                       Driven by a passion for shaping ideas, visual elements, and motion into compelling works, with a strong affinity for minimalism, modern architecture, and abstract art.
+                    </p>
+                    <p className="text-xl md:text-xl leading-relaxed mt-4">
+                    Access my resume{' '}
+                    <a
+                        className="text-[#9C9B9B] hover:text-neutral-500 transition-colors duration-300 relative group"
+                        href="https://o365coloradoedu-my.sharepoint.com/:b:/g/personal/pran4372_colorado_edu/EQDCeyNtbFhBnddLjlmhd8UB9ylQwk80DiKF-CCr5zStOQ?e=s1mihE"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        here
+                        <span className="absolute left-0 right-0 bottom-0 h-0.5 bg-gradient-to-t from-gray-400 via-gray-600 to-gray-800 bg-squiggle bg-bottom-100 bg-auto transition-all duration-300 transform scale-x-0 group-hover:scale-x-100 mt-1"></span>
+                      </a>{' '}
+                    to gain insights into my professional experience and qualifications.
                     </p>
                   </div>
                 </div>
@@ -250,10 +263,10 @@ export default function App() {
             </div>
           </section>
 
-          <section className="mb-8">
+          <section className="mb-4">
             <div className="grid-container mx-auto">
               <div className="grid grid-cols-1 md:grid-cols-10">
-                <div className="md:col-span-9 lg:col-span-9 mb-8">
+                <div className="md:col-span-9 lg:col-span-9 mb-4">
                   <div className="rich-text-hero">
                     <p className="text-xl md:text-xl leading-relaxed">
                       Feel free to reach out and connect with me on social media or via email.{' '}
