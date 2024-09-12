@@ -248,7 +248,7 @@ export default function App() {
                     Access my resume{' '}
                     <a
                         className="text-[#9C9B9B] hover:text-neutral-500 transition-colors duration-300 relative group"
-                        href="https://o365coloradoedu-my.sharepoint.com/:b:/g/personal/pran4372_colorado_edu/ET9wCZIjcMRAtHNHdepTUesBgiKmIKN2sgavLtyOH6YegA?e=ynvhpe"
+                        href="https://o365coloradoedu-my.sharepoint.com/:b:/g/personal/pran4372_colorado_edu/EStFMJK0Fv5Mr-ilrLvGef4BnwJQgj4YlTYyUQuYXilBzQ?e=hol4gl"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
