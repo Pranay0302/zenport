@@ -248,7 +248,7 @@ export default function App() {
                     Access my resume{' '}
                     <a
                         className="text-[#9C9B9B] hover:text-neutral-500 transition-colors duration-300 relative group"
-                        href="https://drive.google.com/file/d/1h0Xx1psmMHxPgz-acNyfc9mql6s4d4Em/view"
+                        href="https://drive.google.com/file/d/16eFa7HM6f4EfWeZHIiSR2y_yxB8-Pipg/view"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
